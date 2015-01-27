@@ -6,14 +6,19 @@ synopsis:
   Minimalistic type-checked compile-time template engine
 description:
   The library integrates flawlessly with Haskell's new 
-  <https://github.com/nikita-volkov/record first-class records>.
+  <http://hackage.haskell.org/package/record first-class records>.
   .
-  It inherits a remarkable quality from the dogs however:
+  It inherits a remarkable quality from the dogs:
   unlike most other template engines
   at compile time it barks at you whenever you do anything wrong in your templates.
   Hence the title (from Russian "lai" means "bark").
   Also it commemorates Laika, the hero dog, 
   which became the first animal to orbit Earth and died in space.
+  .
+  _This library is in experimental state._ 
+  _Detailed documentation will arrive with the first stable release._
+stability:
+  experimental
 category:
 homepage:
   https://github.com/nikita-volkov/laika 
