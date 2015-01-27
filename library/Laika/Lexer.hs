@@ -153,7 +153,8 @@ data Token =
   BlockOpening Path |
   BlockClosing |
   Include FilePath 
-  deriving (Show)
+
+deriving instance Show Token
 
 tokens :: Lexer [Token]
 tokens = 

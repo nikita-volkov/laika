@@ -97,7 +97,8 @@ data Phrase =
   Text Text | 
   Reference Reference |
   Block Block 
-  deriving (Show)
+
+deriving instance Show Phrase
 
 type Reference =
   [r|{ escaped :: Bool, path :: Path }|]
