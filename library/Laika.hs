@@ -55,7 +55,7 @@ renderingLambda path =
           do
             path' <- resolvePath path (view [l|path|] r)
             return $
-              bool id (AppE (AppE (VarE 'onLazyText) (VarE 'escapeHTML))) (view [l|escaped|] r) $
+              bool id (AppE (AppE (VarE 'mapLazyText) (VarE 'escapeHTML))) (view [l|escaped|] r) $
               pathValue path'
         Parser.Block r ->
           do
@@ -80,8 +80,8 @@ pathValue path =
     argDepth =
       length $ filter (== Arg) $ path
 
-onLazyText :: (TL.Text -> TL.Text) -> TLB.Builder -> TLB.Builder
-onLazyText f =
+mapLazyText :: (TL.Text -> TL.Text) -> TLB.Builder -> TLB.Builder
+mapLazyText f =
   TLB.fromLazyText . f . TLB.toLazyText
 
 escapeHTML :: TL.Text -> TL.Text
