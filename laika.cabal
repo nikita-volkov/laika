@@ -49,6 +49,11 @@ source-repository head
     git://github.com/nikita-volkov/laika.git
 
 
+flag demo
+  description: Build Demo
+  default: False
+
+
 library
   hs-source-dirs:
     library
@@ -82,12 +87,7 @@ library
     base-prelude >= 0.1 && < 0.2
 
 
--- Well, it's not a benchmark actually, 
--- but in Cabal there's no better way to specify an executable, 
--- which is not intended for distribution.
-benchmark demo
-  type: 
-    exitcode-stdio-1.0
+executable demo
   hs-source-dirs:
     demo
   main-is:
@@ -102,8 +102,11 @@ benchmark demo
     Arrows, BangPatterns, ConstraintKinds, DataKinds, DefaultSignatures, DeriveDataTypeable, DeriveFunctor, DeriveGeneric, EmptyDataDecls, FlexibleContexts, FlexibleInstances, FunctionalDependencies, GADTs, GeneralizedNewtypeDeriving, ImpredicativeTypes, LambdaCase, LiberalTypeSynonyms, MagicHash, MultiParamTypeClasses, MultiWayIf, NoImplicitPrelude, NoMonomorphismRestriction, OverloadedStrings, PatternGuards, ParallelListComp, QuasiQuotes, RankNTypes, RecordWildCards, ScopedTypeVariables, StandaloneDeriving, TemplateHaskell, TupleSections, TypeFamilies, TypeOperators, UnboxedTuples
   default-language:
     Haskell2010
-  build-depends:
-    laika,
-    text,
-    record,
-    base-prelude
+  if !flag(demo)
+    buildable: False
+  else
+    build-depends:
+      laika,
+      text,
+      record,
+      base-prelude
