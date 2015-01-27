@@ -78,7 +78,7 @@ library
     either >= 4.3 && < 4.4,
     transformers >= 0.3 && < 0.5,
     --
-    record >= 0.1.1 && < 0.2,
+    record >= 0.2 && < 0.3,
     base-prelude >= 0.1 && < 0.2
 
 

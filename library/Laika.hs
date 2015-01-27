@@ -7,6 +7,7 @@ where
 import Laika.Prelude
 import Language.Haskell.TH
 import qualified Record.Types
+import qualified Record.Lens
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as TLB
@@ -70,8 +71,9 @@ renderingLambda path =
 pathValue :: Path -> Exp
 pathValue path =
   foldr (\l r -> UInfixE l (VarE '($)) r) (VarE (mkName ("x" <> show argDepth))) .
-  map (AppE (VarE 'Record.Types.getField) . 
-       SigE (ConE 'Record.Types.Field) . 
+  map (AppE (VarE 'Record.Lens.view) .
+       AppE (VarE 'fieldSimpleLens) . 
+       SigE (VarE 'undefined) . 
        AppT (ConT ''Record.Types.Field) . LitT . StrTyLit . T.unpack) .
   foldMap (\case Field n -> pure n; _ -> empty) .
   takeWhile (/= Arg) 
@@ -79,6 +81,14 @@ pathValue path =
   where
     argDepth =
       length $ filter (== Arg) $ path
+
+purifyQ :: Q a -> a
+purifyQ = unsafePerformIO . runQ
+
+fieldSimpleLens :: Record.Types.FieldLens n s s a a => 
+                   Record.Types.Field n -> Record.Lens.Lens s s a a
+fieldSimpleLens = 
+  Record.Types.fieldLens
 
 mapLazyText :: (TL.Text -> TL.Text) -> TLB.Builder -> TLB.Builder
 mapLazyText f =
