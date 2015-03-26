@@ -74,7 +74,7 @@ pathValue path =
   map (AppE (VarE 'Record.Lens.view) .
        AppE (VarE 'fieldSimpleLens) . 
        SigE (VarE 'undefined) . 
-       AppT (ConT ''Record.Types.Field) . LitT . StrTyLit . T.unpack) .
+       AppT (ConT ''Record.Types.FieldName) . LitT . StrTyLit . T.unpack) .
   foldMap (\case Field n -> pure n; _ -> empty) .
   takeWhile (/= Arg) 
   $ path
