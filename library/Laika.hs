@@ -85,8 +85,8 @@ pathValue path =
 purifyQ :: Q a -> a
 purifyQ = unsafePerformIO . runQ
 
-fieldSimpleLens :: Record.Types.FieldLens n s s a a => 
-                   Record.Types.Field n -> Record.Lens.Lens s s a a
+fieldSimpleLens :: Record.Types.Field n s s a a => 
+                   Record.Types.FieldName n -> Record.Lens.Lens s s a a
 fieldSimpleLens = 
   Record.Types.fieldLens
 

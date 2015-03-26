@@ -1,7 +1,7 @@
 name:
   laika
 version:
-  0.1.1
+  0.1.2
 synopsis:
   Minimalistic type-checked compile-time template engine
 description:
@@ -83,7 +83,7 @@ library
     either >= 4.3 && < 4.4,
     transformers >= 0.3 && < 0.5,
     --
-    record >= 0.2 && < 0.3,
+    record >= 0.3 && < 0.4,
     base-prelude >= 0.1 && < 0.2
 
 
