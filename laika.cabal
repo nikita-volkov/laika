@@ -1,11 +1,11 @@
 name:
   laika
 version:
-  0.1.3
+  0.1.3.1
 synopsis:
   Minimalistic type-checked compile-time template engine
 description:
-  The library integrates flawlessly with Haskell's new 
+  The library integrates with Haskell's new 
   <http://hackage.haskell.org/package/record first-class records>.
   .
   It inherits a remarkable quality from the dogs:
@@ -15,8 +15,8 @@ description:
   Also it commemorates Laika, the hero dog, 
   which became the first animal to orbit Earth and died in space.
   .
-  _This library is in experimental state._ 
-  _Detailed documentation will arrive with the first stable release._
+  /This library is in experimental state./
+  /Detailed documentation will arrive with the first stable release./
 stability:
   experimental
 category:
@@ -71,16 +71,16 @@ library
     Laika
   build-depends:
     --
-    template-haskell,
+    template-haskell == 2.*,
     -- 
     system-filepath == 0.4.*,
     system-fileio == 0.3.*,
     -- 
-    attoparsec >= 0.10 && < 0.13,
+    attoparsec >= 0.10 && < 0.14,
     --
-    text >= 1 && < 1.3,
+    text >= 1 && < 2,
     --
-    either >= 4.3 && < 4.4,
+    either >= 4.3 && < 5,
     transformers >= 0.3 && < 0.5,
     --
     record >= 0.3 && < 0.4,
