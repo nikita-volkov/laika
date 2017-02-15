@@ -13,24 +13,24 @@ using such functions as 'Data.Semigroup.<>' and 'mappend'.
 Can be rendered into plentiful data-types,
 which are provided by the Rendering modules of the library.
 -}
-newtype Snippet =
-  Snippet A.Builder
+newtype HTML =
+  HTML A.Builder
 
-deriving instance Monoid Snippet
+deriving instance Monoid HTML
 
-instance Semigroup Snippet
+instance Semigroup HTML
 
-instance IsString Snippet where
+instance IsString HTML where
   {-# INLINE fromString #-}
   fromString =
     text . fromString
 
 {-|
-Turns text into Snippet,
+Turns text into HTML,
 applying the UTF-8 and HTML-entity encodings to it.
 -}
 {-# INLINE text #-}
-text :: Text -> Snippet
+text :: Text -> HTML
 text text =
-  Snippet (B.textInUTF8HTML text)
+  HTML (B.textInUTF8HTML text)
 

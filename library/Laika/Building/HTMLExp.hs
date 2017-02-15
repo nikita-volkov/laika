@@ -1,4 +1,4 @@
-module Laika.Building.SnippetExp where
+module Laika.Building.HTMLExp where
 
 import Laika.Prelude
 import Language.Haskell.TH
@@ -45,7 +45,7 @@ run x =
     Bytes [] ->
       VarE 'mempty
     Bytes list ->
-      AppE (ConE 'H.Snippet) (AppE (AppE (VarE 'E.byteListOfLength) lengthE) byteListE)
+      AppE (ConE 'H.HTML) (AppE (AppE (VarE 'E.byteListOfLength) lengthE) byteListE)
       where
         byteListE =
           ListE (map (LitE . IntegerL . fromIntegral) list)

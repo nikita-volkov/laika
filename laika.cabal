@@ -44,7 +44,7 @@ library
     Laika.Parsing.XMLTree
     Laika.Building.Template
     Laika.Building.XMLTree
-    Laika.Building.SnippetExp
+    Laika.Building.HTMLExp
     Laika.Building.ByteString.Builder.FixedPrims
     Laika.Building.ByteString.Builder.BoundedPrims
     Laika.Building.ByteString.Builder

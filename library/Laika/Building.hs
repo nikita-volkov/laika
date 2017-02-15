@@ -3,7 +3,7 @@ A DSL for building HTML.
 -}
 module Laika.Building
 (
-  A.Snippet,
+  A.HTML,
   A.text,
   html,
   htmlFile,
@@ -16,12 +16,12 @@ import qualified Data.ByteString.Builder as B
 import qualified Language.Haskell.TH.Quote as C
 import qualified Laika.Building.XMLTree as D
 import qualified Laika.Parsing.XMLTree as E
-import qualified Laika.Building.SnippetExp as F
+import qualified Laika.Building.HTMLExp as F
 import qualified Data.Text as G
 
 
 {-|
-A quasi-quoter, which produces an expression of type 'A.Snippet'.
+A quasi-quoter, which produces an expression of type 'A.HTML'.
 It parses and validates HTML and reconstructs it into well-formed HTML
 with all the entities encoded, tags properly closed and etc.
 All the entities of form @&!name;@ get interpreted as placeholders for variables
@@ -38,14 +38,14 @@ squeezing the absolute __maximum of runtime performance__ for your application.
 
 Depending on the context, the placeholder can have the following types:
 
-* In the context of an element content, it has the type 'A.Snippet',
+* In the context of an element content, it has the type 'A.HTML',
 
 * In the context of an attribute it has the type 'Text'.
 
 [Example]
 
->mySnippet :: Text -> Snippet -> Snippet
->mySnippet var1 var2 =
+>myHTML :: Text -> HTML -> HTML
+>myHTML var1 var2 =
 >  [html|<a href="&!var1;">&!var2;</a>|]
 -}
 html :: C.QuasiQuoter
@@ -65,8 +65,8 @@ which contains the template.
 
 [Example]
 
->mySnippet :: Text -> Snippet -> Snippet
->mySnippet var1 var2 =
+>myHTML :: Text -> HTML -> HTML
+>myHTML var1 var2 =
 >  [htmlFile|src/html.html|]
 -}
 htmlFile :: C.QuasiQuoter

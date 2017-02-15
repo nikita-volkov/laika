@@ -5,7 +5,7 @@ module Laika.Building.XMLTree where
 
 import Laika.Prelude
 import Data.XML.Types
-import qualified Laika.Building.SnippetExp as C
+import qualified Laika.Building.HTMLExp as C
 import qualified Laika.Building.Template as D
 import qualified Data.Text as E
 import qualified Data.Attoparsec.Text as A

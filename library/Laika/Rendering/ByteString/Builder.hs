@@ -10,6 +10,6 @@ import qualified Data.ByteString.Builder as B
 Renders the snippet into a byte-array builder.
 -}
 {-# INLINE html #-}
-html :: A.Snippet -> B.Builder
-html (A.Snippet builder) =
+html :: A.HTML -> B.Builder
+html (A.HTML builder) =
   builder

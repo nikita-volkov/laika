@@ -16,6 +16,6 @@ This is merely a convenience wrapper for the following:
 @'B.toLazyByteString' . 'C.html'@
 -}
 {-# INLINE html #-}
-html :: A.Snippet -> D.ByteString
+html :: A.HTML -> D.ByteString
 html =
   B.toLazyByteString . C.html

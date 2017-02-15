@@ -15,6 +15,6 @@ This is merely a convenience wrapper for the following:
 @'C.toStrict' . 'B.html'@
 -}
 {-# INLINE html #-}
-html :: A.Snippet -> ByteString
+html :: A.HTML -> ByteString
 html =
   C.toStrict . B.html
