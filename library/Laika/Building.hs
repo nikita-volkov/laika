@@ -18,6 +18,7 @@ import qualified Laika.Building.XMLTree as D
 import qualified Laika.Parsing.XMLTree as E
 import qualified Laika.Building.HTMLExp as F
 import qualified Data.Text as G
+import qualified HTML.Compacting as H
 
 
 {-|
@@ -56,7 +57,7 @@ html =
       either (fail . G.unpack) return expEither
       where
         expEither =
-          E.text (fromString x) >>= traverse (D.run D.node) >>= return . F.run . fold
+          E.text (fromString x) >>= traverse (D.run D.node) . H.process >>= return . F.run . fold
 
 {-|
 Does all the same as 'html' with a difference
